@@ -1,10 +1,11 @@
 package logger;
-import org.apache.log4j.Logger;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 
 public class Main
 {
-    private static final Logger log = Logger.getLogger(Main.class);
+    private static final Log log = LogFactory.getLog(Main.class);
     static void foo()
     {
         throw new RuntimeException("runtime exception thrown");

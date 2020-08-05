@@ -39,20 +39,32 @@ food.forEach(System.out::println); //method reference
 ```
 
 ## Logging
-- You need log4j.jar to use
-- Need to create a "log4j.properties" file
+- You need log4j2 JAR files
+    - commons-logging-1.2.jar
+    - log4j-api-2.13.3.jar
+    - log4j-core-2.13.3.jar
+    - log4j-jcl-2.13.3.jar
+- Need to create a "log4j2.properties" file
 
 ```properties
-# writes anything above the given level
-log4j.rootLogger=ALL,stdout 
-log4j.logger.com.endeca=INFO
+# Console logging
+status = error
+name = PropertiesConfig
 
+filters = threshold
 
-# Logger for crawl metrics
-log4j.logger.com.endeca.itl.web.metrics=INFO
+filter.threshold.type = ThresholdFilter
+filter.threshold.level = all
 
-log4j.appender.stdout=org.apache.log4j.ConsoleAppender
-log4j.appender.stdout.layout=org.apache.log4j.PatternLayout
-log4j.appender.stdout.layout.ConversionPattern=%p\t%d{ISO8601}\t%r\t%c\t[%t]\t%m%n
+appenders = console
+
+appender.console.type = Console
+appender.console.name = STDOUT
+appender.console.layout.type = PatternLayout
+appender.console.layout.pattern = %d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n
+
+rootLogger.level = debug
+rootLogger.appenderRefs = stdout
+rootLogger.appenderRef.stdout.ref = STDOUT
 ```
 ![image](log-levels.png)
