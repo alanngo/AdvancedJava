@@ -37,3 +37,22 @@ food.add("sushi");
 food.forEach(x->System.out.println(x)); //lambda
 food.forEach(System.out::println); //method reference
 ```
+
+## Logging
+- You need log4j.jar to use
+- Need to create a "log4j.properties" file
+
+```properties
+# writes anything above the given level
+log4j.rootLogger=ALL,stdout 
+log4j.logger.com.endeca=INFO
+
+
+# Logger for crawl metrics
+log4j.logger.com.endeca.itl.web.metrics=INFO
+
+log4j.appender.stdout=org.apache.log4j.ConsoleAppender
+log4j.appender.stdout.layout=org.apache.log4j.PatternLayout
+log4j.appender.stdout.layout.ConversionPattern=%p\t%d{ISO8601}\t%r\t%c\t[%t]\t%m%n
+```
+![image](log-levels.png)
