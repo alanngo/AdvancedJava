@@ -37,7 +37,25 @@ food.add("sushi");
 food.forEach(x->System.out.println(x)); //lambda
 food.forEach(System.out::println); //method reference
 ```
+## Stream
+- map: The map method is used to returns a stream consisting of the results of applying the given function to the elements of this stream.
+    ```java
+      List number = Arrays.asList(2,3,4,5);
+      List square = number.stream().map(x->x*x).collect(Collectors.toList());
+    ```
+   
+- filter: The filter method is used to select elements as per the Predicate passed as argument.
+    ```java
+       List names = Arrays.asList("Reflection","Collection","Stream");
+       List result = names.stream().filter(s->s.startsWith("S")).collect(Collectors.toList());
+    ```
 
+- sorted: The sorted method is used to sort the stream.
+    ```java
+     List names = Arrays.asList("Reflection","Collection","Stream");
+     List result = names.stream().sorted().collect(Collectors.toList());
+    ```
+   
 ## Logging
 - You need log4j2 JAR files
     - commons-logging-1.2.jar
